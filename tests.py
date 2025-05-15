@@ -31,12 +31,11 @@ def test_set_book_genre(books_collector):
     books_collector.set_book_genre('Война миров', 'Фантастика')
     assert books_collector.get_book_genre('Война миров') == 'Фантастика'
 
-def test_get_book_by_genre(books_collector):
-    books_collector.add_new_book('Метро 2033')
-    books_collector.set_book_genre('Метро 2033', 'Фантастика')
-    result = books_collector.get_books_with_specific_genre('Фантастика')
-    assert result == ['Метро 2033']
-
+def test_get_book_genre_returns_dict_value(books_collector):
+    book_name = "Метро 2033"
+    books_collector.add_new_book(book_name)
+    books_collector.books_genre[book_name] = "Фантастика"
+    assert books_collector.get_book_genre(book_name) == "Фантастика"
 
 def test_get_books_genre_returns_dict(books_collector):
     books_collector.add_new_book("Мастер и Маргарита")
