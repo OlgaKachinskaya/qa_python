@@ -43,6 +43,13 @@ def test_get_books_genre_returns_dict(books_collector):
     assert books_dict == {"Мастер и Маргарита": ""}
 
 
+def test_get_books_for_children(books_collector):
+    books_collector.add_new_book("Чук и Гек")
+    books_collector.set_book_genre("Чук и Гек", "Мультфильмы")
+    result = books_collector.get_books_for_children()
+    assert result == ["Чук и Гек"]
+
+
 def test_book_not_for_children(books_collector):
     books_collector.add_new_book("Оно")
     books_collector.set_book_genre("Оно", "Ужасы")
